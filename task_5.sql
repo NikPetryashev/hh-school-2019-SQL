@@ -2,7 +2,8 @@
 Вывести названия вакансий в алфавитном порядке, 
 на которые было меньше 5 откликов за первую неделю после публикации вакансии.
 В случае, если на вакансию не было ни одного отклика она также должна быть выведена. */
-
+--CREATE INDEX response_idx ON response(vacancy_id) INCLUDE(response_time);
+--CREATE INDEX vacancy_idx ON vacancy(vacancy_id) INCLUDE(creation_time);
 --EXPLAIN ANALYZE
 WITH result_response AS( --формируем таблицу с id вакансий и счетчиком откликов за неделю 
 	SELECT vac.vacancy_id,count(vac.vacancy_id) AS count	
